@@ -1,0 +1,47 @@
+{
+  "name": "integration-test-sample",
+  "version": "1.0.0",
+  "description": "Sample project to show how implement unit tests with docker",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --respawn --ignore-watch node_modules ./src/index.ts",
+    "start": "node ./src/index.js",
+    "migration:create": "knex migrate:make",
+    "migration:latest": "knex migrate:latest",
+    "seed:create": "knex seed:make",
+    "seed:run": "knex seed:run",
+    "test:integration": "npm run migration:latest && npm run seed:run && jest --runInBand --config=jest.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xXMauricioHXx/integration-test-sample.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xXMauricioHXx/integration-test-sample/issues"
+  },
+  "homepage": "https://github.com/xXMauricioHXx/integration-test-sample#readme",
+  "devDependencies": {
+    "@types/compression": "^1.7.2",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^29.0.3",
+    "@types/node": "^17.0.17",
+    "jest": "^29.0.3"
+  },
+  "dependencies": {
+    "@types/supertest": "^2.0.12",
+    "compression": "^1.7.4",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "knex": "^2.3.0",
+    "mysql2": "^2.3.3",
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^6.2.4",
+    "ts-jest": "^29.0.3",
+    "ts-node-dev": "^1.1.8",
+    "tsyringe": "^4.6.0"
+  }
+}
