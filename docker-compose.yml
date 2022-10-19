@@ -1,19 +1,18 @@
-version: '2.1'
+version: '3.8'
 services:
-  app:
+  integration-test-app:
     build:
       context: .
-    command: ['run', 'test:integration']
+    env_file: ./.env
+    command: './waiting-for.sh db:3306 --strict --timeout=300 -- npm run test:integration'
     environment:
-      - MYSQL_SCHEMA=integration_test_sample
+      - MYSQL_HOST=db
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
-      - MYSQL_HOST=db
+      - MYSQL_SCHEMA=integration_test_sample
       - MYSQL_PORT=3306
-    entrypoint: npm
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     networks:
       - net
   db:

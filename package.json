@@ -10,6 +10,7 @@
     "migration:latest": "knex migrate:latest",
     "seed:create": "knex seed:make",
     "seed:run": "knex seed:run",
+    "test:integration:dev": "jest --runInBand --config=jest.config.js",
     "test:integration": "npm run migration:latest && npm run seed:run && jest --runInBand --config=jest.config.js",
     "test:compose": "docker-compose up --abort-on-container-exit --build"
   },
