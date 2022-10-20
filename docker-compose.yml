@@ -3,7 +3,6 @@ services:
   integration-test-app:
     build:
       context: .
-    env_file: ./.env
     command: './waiting-for.sh db:3306 --strict --timeout=300 -- npm run test:integration'
     environment:
       - MYSQL_HOST=db
